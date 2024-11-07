@@ -1,4 +1,4 @@
-# _IBM® watsonx™ Code Assistant for Red Hat® Ansible Lightspeed_
+# _IBM® watsonx™ Code Assistant for Ansible Lightspeed_
 
 <img src="https://github.com/user-attachments/assets/4b415ea3-a605-4cd7-896e-ccb3eb9743c1" width="120" align="left" alt="ANSIBLE_LIGHTSPED_ICON_SVG">
 
