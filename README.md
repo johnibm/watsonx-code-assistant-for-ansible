@@ -1,8 +1,8 @@
 # _IBM® watsonx™ Code Assistant(WCA) for Red Hat® Ansible Lightspeed_
 
-_**IBM® watsonx™ Code Assistant(WCA) for Red Hat® Ansible Lightspeed** demystifies the process of Ansible Playbook creation through generative AI-powered content recommendations. This repository contains sample end-to-end demos, guidelines for best prompting practices, and guidelines for model customization._
-
 <img src="https://github.com/user-attachments/assets/4b415ea3-a605-4cd7-896e-ccb3eb9743c1" width="70" align="left" alt="ANSIBLE_LIGHTSPED_ICON_SVG">
+
+_**IBM® watsonx™ Code Assistant(WCA) for Red Hat® Ansible Lightspeed** demystifies the process of Ansible Playbook creation through generative AI-powered content recommendations. This repository contains sample end-to-end demos, guidelines for best prompting practices, and guidelines for model customization._
 
 ## Table of Contents
 
