@@ -285,7 +285,7 @@ One of the key advantages of Ansible Lightspeed is its ability to leverage **con
 
 ---
 
-## **_Question❓, Bug(issue):bug: or New Features(Contribute)_** 🙋‍♂️
+## **_Question❓, Bug(issue) 🐛 or New Features(Contribute)_** 🙋‍♂️
 
 <!-- Questions can be useful but optional, this gives you a place to say, "This is how to contact this project maintainers or create PRs -->
 If you have any questions, issues or feature requests you can create a new issue [**> Click Here <**](https://github.com/IBM/watsonx-code-assistant-for-ansible/issues/)
