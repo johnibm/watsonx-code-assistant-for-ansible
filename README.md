@@ -154,9 +154,76 @@ One of the key advantages of Ansible Lightspeed is its ability to leverage **con
   <details>
     <summary>9. If any inline suggestions don't come up with the variable name you want, instead of accepting it and then changing the name of that variable, you can try changing the task name, there are several synonyms or alternative phrases that you can use it.</summary>
 
-    - name: Print the upgrade_inhibited var
+    - name: Print on screen the upgrade_inhibited var
       ansible.builtin.debug:
-        msg: "{{ _msg_ }}"
+        msg: "{{ upgrade_inhibited }}"
+
+    - name: Debug the upgrade_inhibited var
+      ansible.builtin.debug:
+        msg: "{{ upgrade_inhibited }}"
+
+    - name: Output upgrade_inhibited var
+      ansible.builtin.debug:
+        msg: "{{ upgrade_inhibited }}"
+
+    - name: Present upgrade_inhibited var
+      ansible.builtin.debug:
+        msg: "{{ upgrade_inhibited }}"
+
+    - name: Create /var/tmp/ansible directory if it does not exist
+      ansible.builtin.file:
+        path: /var/tmp/ansible
+        state: directory
+        mode: '0755'
+
+    - name: Generate /var/tmp/ansible directory if it does not exist
+      ansible.builtin.file:
+        path: /var/tmp/ansible
+        state: directory
+        mode: '0755'
+
+    - name: Produce /var/tmp/ansible directory if it does not exist
+      ansible.builtin.file:
+        path: /var/tmp/ansible
+        state: directory
+        mode: '0755'
+
+    - name: Form /var/tmp/ansible directory if it does not exist
+      ansible.builtin.file:
+        path: /var/tmp/ansible
+        state: directory
+        mode: '0755'
+
+    - name: Craft /var/tmp/ansible directory if it does not exist
+      ansible.builtin.file:
+        path: /var/tmp/ansible
+        state: directory
+        mode: '0755'
+
+    - name: Build /var/tmp/ansible directory if it does not exist
+      ansible.builtin.file:
+        path: /var/tmp/ansible
+        state: directory
+        mode: '0755'
+
+    - name: Ensure /var/tmp/ansible is in place
+      ansible.builtin.file:
+        path: /var/tmp/ansible
+        state: directory
+        mode: '0755'
+
+    - name: Guarantee /var/tmp/ansible is in place
+      ansible.builtin.file:
+        path: /var/tmp/ansible
+        state: directory
+        mode: '0755'
+
+    - name: Ensure NTP service is running on RedHat Server(s)
+      ansible.builtin.service:
+        name: ntpd
+        state: started
+        enabled: true
+      when: ansible_os_family == "RedHat"
 
   </details> <!-- End of nested collapsible section 9 -->
 
