@@ -1,18 +1,16 @@
-# IBM® watsonx™ Code Assistant(WCA) for Red Hat® Ansible Lightspeed
+# _IBM® watsonx™ Code Assistant(WCA) for Red Hat® Ansible Lightspeed_
 
-IBM® watsonx™ Code Assistant(WCA) for Red Hat® Ansible Lightspeed demystifies the process of Ansible Playbook creation through generative AI-powered content recommendations. This repository contains sample end-to-end demos, guidelines for best prompting practices, and guidelines for model customization.
+_**IBM® watsonx™ Code Assistant(WCA) for Red Hat® Ansible Lightspeed** demystifies the process of Ansible Playbook creation through generative AI-powered content recommendations. This repository contains sample end-to-end demos, guidelines for best prompting practices, and guidelines for model customization._
 
-<img src="https://github.com/user-attachments/assets/4b415ea3-a605-4cd7-896e-ccb3eb9743c1" width="150" align="left" alt="ANSIBLE_LIGHTSPED_ICON_SVG">
+<img src="https://github.com/user-attachments/assets/4b415ea3-a605-4cd7-896e-ccb3eb9743c1" width="70" align="left" alt="ANSIBLE_LIGHTSPED_ICON_SVG">
 
-## Table of contents
+## Table of Contents
 
-<!--ts-->
-* [**IBM® watsonx™ Code Assistant(WCA) for Red Hat® Ansible Lightspeed**](#table-of-contents)
-  * [**Ansible Lightspeed Prompting Guide - Practical hands-on**](#ansible-lightspeed-prompting-guide---practical-hands-on)
-  * [**Questions, Bug(Issue) or New Features(Contribute)**](#question-bugissuebug-or-new-featurescontribute-️)
-  * [**License**](#-license-)
-  * [**Copyright**](#copyright)
-<!--te-->
+- [Introduction](#table-of-contents)
+- [Ansible Lightspeed Prompting Guide - Practical hands-on](#ansible-lightspeed-prompting-guide---practical-hands-on)
+- [Questions, Bug(Issue) or New Features(Contribute)](#question-bugissue--or-new-featurescontribute-️)
+- [License](#-license-)
+- [Copyright](#copyright)
 
 ---
 
