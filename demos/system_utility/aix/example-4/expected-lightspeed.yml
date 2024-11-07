@@ -1,0 +1,26 @@
+---
+- name: Perform backup ( Alternate Disk ) for AIX systems
+  hosts: all
+  gather_facts: false # <--- Disable Gathers facts about remote hosts
+  become: true  # <--- Elevated privs
+  tasks:
+
+    - name: "Perform a cleanup of any existing alternate disk copy using ibm.power_aix.alt_disk with action clean"
+      # Content suggestion provided by Ansible Lightspeed
+      ibm.power_aix.alt_disk:
+        action: clean
+
+    - name: "Run alternate disk copy with alt_disk module with the copy action, disk_size_policy nearest and force and register the output"
+      # Content suggestion provided by Ansible Lightspeed
+      ibm.power_aix.alt_disk:
+        action: copy
+        disk_size_policy: nearest
+        force: true
+      register: copy_output
+
+    - name: "Assert string 'Fixing file system superblocks...' in stdout output at previous task"
+      # Content suggestion provided by Ansible Lightspeed
+      ansible.builtin.assert:
+        that:
+          - "'Fixing file system superblocks...' in alt_disk_output.stdout"
+...

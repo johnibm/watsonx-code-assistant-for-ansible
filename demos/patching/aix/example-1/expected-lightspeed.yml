@@ -1,0 +1,141 @@
+---
+- name: Apply Patch Management AIX systems
+  hosts: all
+  gather_facts: false # <--- Disable Gathers facts about remote hosts
+  become: true  # <--- Elevated privs
+  vars:
+    start_msg:
+      - "*****************************************************************************************************"
+      - " Starting Update Patches TL (Technology Level) earlier ML: (Maintenance Level) / SP (Service Pack)  "
+      - "*****************************************************************************************************"
+    node_v: nfsserver01.lab.example.com
+    mount_dir_value: /mount/nfs
+    mount_over_dir_value: /localdir
+    target_dir: "/nfsserver/installp/ppc"
+    dict_assert_lppchk_msg:
+      fail_msg: "FAILED!  There are some filesets MISSING or BROKEN status. Please fix that issue as soon as you get a chance and try again."
+      success_msg: "PASSED!  => No inconsistencies were found in any filesets, so we're good to go. Proceeding with the next tasks..."
+    dict_update_tl_sp_msg:
+      fail_msg: "FAILED! Updating to a level TL/SP receives an unexpected failure during execution. fix that issue as soon as you get a chance and try again."
+      success_msg: "PASSED!  => Updating to a new TL/SP was completed successfully, so we're good to go. Proceeding with the next tasks..."
+    vars_slack_token: "XXXXXXXXXXXXXXXXX"
+    vars_slack_msg: "Updating TL/SP (FULL) was completed with SUCCESS. Congratulations! There are new features and benefits for updating to a new TL/SP"
+    vars_slack_color: "#48ea10"
+    final_msg:
+      - "******************************************************************************************"
+      - " SUCCESS! Update Patches TL (Technology Level) / SP (Service Pack) has been completed !!! "
+      - "******************************************************************************************"
+  tasks:
+
+    - name: "Print on screen using start_msg var"
+      # Content suggestion provided by Ansible Lightspeed
+      ansible.builtin.debug:
+        msg: "{{ start_msg }}"
+
+    - name: Performs an in-depth consistency check on the installed LPPs(lppchk -vm3)
+      # Content suggestion provided by Ansible Lightspeed
+      ansible.builtin.command: lppchk -vm3
+      register: lppchk_result
+      changed_when: false
+      failed_when: false
+
+    - name: "Assert the length of the stdout output in the previous task is equal to zero with a custom message dict_assert_lppchk_msg var"
+      # Content suggestion provided by Ansible Lightspeed
+      ansible.builtin.assert:
+        that:
+          - lppchk_output.stdout | length | int == 0
+        fail_msg: "{{ dict_assert_lppchk_msg.fail_msg }}"
+        success_msg: "{{ dict_assert_lppchk_msg.success_msg }}"
+
+    - name: "Ensure directory exist {{ mount_over_dir_value }}"
+      # Content suggestion provided by Ansible Lightspeed
+      ansible.builtin.file:
+        path: "{{ mount_over_dir_value }}"
+        state: directory
+        mode: '0755'
+
+    - name: "Mount NFS share using ibm.power_aix.mount module with vars node_v, mount_dir_value and mount_over_dir_value"
+      # Content suggestion provided by Ansible Lightspeed
+      ibm.power_aix.mount:
+        state: mount
+        node: "{{ node_v }}"
+        mount_dir: "{{ mount_dir_value }}"
+        mount_over_dir: "{{ mount_over_dir_value }}"
+
+    - name: Check the currently OS version(oslevel -s)
+      # Content suggestion provided by Ansible Lightspeed
+      ansible.builtin.command: oslevel -s
+      register: oslevel_result
+      changed_when: false
+      failed_when: false
+
+    - name: "List interim fix using ibm.power_aix.emgr module and register the output"
+      # Content suggestion provided by Ansible Lightspeed
+      ibm.power_aix.emgr:
+        action: list
+      register: emgr_result
+      changed_when: false
+      failed_when: false
+
+    - name: "Remove all interim fix using ibm.power_aix.emgr module based on 'ifix_label' if it found any in the previous task"
+      # Content suggestion provided by Ansible Lightspeed
+      ibm.power_aix.emgr:
+        action: remove
+        ifix_label: "{{ emgr_result.stdout }}"
+      when: emgr_result.stdout | length > 0
+
+    - name: "Commit all filesets with applied state using ibm.power_aix.installp module with the commit action and install_list all"
+      # Content suggestion provided by Ansible Lightspeed
+      ibm.power_aix.installp:
+        action: commit
+        install_list: all
+      register: installp_result
+      changed_when: false
+      failed_when: false
+
+    - name: "Updating to a new TL/SP using install_all_updates with device as target_dir var, extend_fs, agree_licenses and suppress_multivolume"
+      # Content suggestion provided by Ansible Lightspeed
+      ibm.power_aix.install_all_updates:
+        device: "{{ target_dir }}"
+        extend_fs: true
+        agree_licenses: true
+        suppress_multivolume: true
+      register: install_all_updates_result
+      changed_when: false
+      failed_when: false
+
+    - name: "Assert string 'install_all_updates: Result = SUCCESS' in output(STDOUT) at previous task with a custom message dict_update_tl_sp_msg var"
+      # Content suggestion provided by Ansible Lightspeed
+      ansible.builtin.assert:
+        that:
+          - "'install_all_updates: Result = SUCCESS' in install_all_updates_result.stdout"
+        fail_msg: "{{ dict_assert_tcb_msg.fail_msg }}"
+        success_msg: "{{ dict_assert_tcb_msg.success_msg }}"
+
+    - name: "Reboot host(s) using ibm.power_aix.reboot module when install_all_updates_result"  # noqa no-handler
+      # Content suggestion provided by Ansible Lightspeed
+      ibm.power_aix.reboot:
+      when: install_all_updates_result.changed
+
+    - name: "Notify Slack with token as vars_token, msg as vars_msgwhen and color as vars_color when vars_slack_token"
+      # Content suggestion provided by Ansible Lightspeed
+      when: vars_slack_token is defined
+      community.general.slack:
+        token: "{{ vars_slack_token }}"
+        msg: "{{ vars_slack_msg }}"
+        color: "{{ vars_slack_color }}"
+
+    - name: "Umount NFS share using the ibm.power_aix.mount module with the variable mount_dir_value and force"
+      # Content suggestion provided by Ansible Lightspeed
+      ibm.power_aix.mount:
+        state: umount
+        node: "{{ node_v }}"
+        mount_dir: "{{ mount_dir_value }}"
+        force: true
+      register: umount_status
+
+    - name: "Notify | Print on screen using final_msg var"
+      # Content suggestion provided by Ansible Lightspeed
+      ansible.builtin.debug:
+        msg: "{{ final_msg }}"
+...

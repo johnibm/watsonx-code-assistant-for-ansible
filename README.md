@@ -8,6 +8,7 @@ _**IBM® watsonx™ Code Assistant(WCA) for Red Hat® Ansible Lightspeed** demys
 
 - [Introduction](#table-of-contents)
 - [Ansible Lightspeed Prompting Guide - Practical hands-on](#ansible-lightspeed-prompting-guide---practical-hands-on)
+- [Demos](./demos/)
 - [Questions, Bug(Issue) or New Features(Contribute)](#question-bugissue--or-new-featurescontribute-️)
 - [License](#-license-)
 - [Copyright](#copyright)
