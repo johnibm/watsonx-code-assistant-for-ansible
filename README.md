@@ -133,23 +133,21 @@ There are 2 ways you can initiate Playbook explanation:
 Right click on the **Playbook** -> **'Explain the playbook with Ansible Lightspeed'**  
 Click on the **'Ansible'** icon on VS Code's Activity Bar -> Under **'Ansible Lightspeed'** -> **'Explain the current playbook'**  
 
-<img src="https://github.com/user-attachments/assets/dff0b077-f7ec-4e95-a9dc-9dae174a8a45" alt="playbook-explanation-gif">
+<img src="https://github.com/user-attachments/assets/dff0b077-f7ec-4e95-a9dc-9dae174a8a45" alt="playbook-explanation-gif">  
 
 ❗ **Note:** ❗
-- You can run playbook explanation on any existing Ansible playbooks. 
-- Playbook explanations are strictly limited to self-contained Full Playbooks—they do not cover task files or role files.
+- _You can run playbook explanation on any existing Ansible playbooks._ 
+- _Playbook explanations are strictly limited to self-contained Full Playbooks—they do not cover task files or role files._
 
-**Video by [Anshul Behl](https://www.linkedin.com/in/ianshulbehl/) from Principal Technical Marketing Manager by Red Hat®**
+**Video by [Anshul Behl](https://www.linkedin.com/in/ianshulbehl/) from Principal Technical Marketing Manager by Red Hat®** 👇
 🎥 [Playbook Generation using Ansible Lightspeed with IBM watsonx Code Assistant](https://youtu.be/oS7mSykl_D0?list=PLdu06OJoEf2bVLR899FuKc3AiuJvbIRZU)
 
-**Video by [Ian Smalley](https://www.linkedin.com/in/ian-smalley-3932a21b/) from Editor by IBM® Technology**
+**Video by [Ian Smalley](https://www.linkedin.com/in/ian-smalley-3932a21b/) from Editor by IBM® Technology** 👇
 🎥 [Ansible Playbook Creation with IBM watsonx Code Assistant](https://youtu.be/vG54TKeEwP4)
 
 ---
 
 ### **Key feature: Model Customization** 
-
-![mode-customization.png](./../../images/lightspeed/mode-customization.png){ width="200", align=left }
 
 <img src="https://github.com/user-attachments/assets/3c940bed-0ed6-4afe-8380-aec5b2755642" width="120" align="left" alt="model-customization-png">
 
@@ -165,7 +163,7 @@ Model Customization is done using **Prompt Tuning:** Empowers organizations to t
 
 <img src="https://github.com/user-attachments/assets/c5d497ac-425b-4494-9a83-9e981285eb6a" alt="model-customization-example-png">
 
-**NOTE:** You don't need to be a data scientist to effectively use watsonx Code Assistant. The UI provides helpful contextual information and guidance along the way.
+**NOTE:** _You don't need to be a data scientist to effectively use watsonx Code Assistant. The UI provides helpful contextual information and guidance along the way._
 
 ---
 
