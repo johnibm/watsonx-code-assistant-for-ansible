@@ -139,10 +139,10 @@ Click on the **'Ansible'** icon on VS Code's Activity Bar -> Under **'Ansible Li
 - _You can run playbook explanation on any existing Ansible playbooks._ 
 - _Playbook explanations are strictly limited to self-contained Full Playbooks—they do not cover task files or role files._
 
-**Video by [Anshul Behl](https://www.linkedin.com/in/ianshulbehl/) from Principal Technical Marketing Manager by Red Hat®** 👇
+**Video by [Anshul Behl](https://www.linkedin.com/in/ianshulbehl/) from Principal Technical Marketing Manager by Red Hat®** 👇  
 🎥 [Playbook Generation using Ansible Lightspeed with IBM watsonx Code Assistant](https://youtu.be/oS7mSykl_D0?list=PLdu06OJoEf2bVLR899FuKc3AiuJvbIRZU)
 
-**Video by [Ian Smalley](https://www.linkedin.com/in/ian-smalley-3932a21b/) from Editor by IBM® Technology** 👇
+**Video by [Ian Smalley](https://www.linkedin.com/in/ian-smalley-3932a21b/) from Editor by IBM® Technology** 👇  
 🎥 [Ansible Playbook Creation with IBM watsonx Code Assistant](https://youtu.be/vG54TKeEwP4)
 
 ---
