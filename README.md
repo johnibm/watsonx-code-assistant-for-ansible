@@ -112,11 +112,11 @@ Install and enable PostgreSQL
 
 ### **Key feature: Playbook Explanation**
 
-<img src="https://github.com/user-attachments/assets/c58ffb05-172a-4e15-92ed-a21c08a358e0" width="120" align="left" alt="playbook-explanation-png">
+<img src="https://github.com/user-attachments/assets/c58ffb05-172a-4e15-92ed-a21c08a358e0" width="220" align="left" alt="playbook-explanation-png">
 
-Playbook explanation is designed to overcome the challenges of understanding complex Playbooks.  
+_Playbook explanation is designed to overcome the challenges of understanding complex Playbooks._  
 
-users can acquire explanations of each Playbook including a detailed summary of what the Playbook is doing, the perquisites for running the Playbook and a description of each task.  
+_users can acquire explanations of each Playbook including a detailed summary of what the Playbook is doing, the perquisites for running the Playbook and a description of each task._
 
 This ensures that each development team member — regardless of expertise — can understand each task and Playbook efficiently to help minimize the learning curve for faster automation content creation.
 
