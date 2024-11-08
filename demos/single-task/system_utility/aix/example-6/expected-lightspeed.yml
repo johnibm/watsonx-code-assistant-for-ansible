@@ -1,0 +1,68 @@
+---
+- name: Perform System Image Backup (mksysb) for AIX systems
+  hosts: all
+  gather_facts: true # <--- Enabled Gathers facts about remote hosts
+  become: true  # <--- Elevated privs
+  vars:
+    start_msg:
+      - "************************************************"
+      - " Starting create a System Image Backup (mksysb) "
+      - "************************************************"
+    node_v: nfsserver01.lab.example.com
+    mount_dir_value: /mount/nfs
+    mount_over_dir_value: /localdir
+    location: "{{ mount_over_dir_value }}/{{ inventory_hostname }}-{{ ansible_distribution }}-{{ ansible_distribution_version }}.mksysb"
+    dict_assert_backup_msg:
+      fail_msg: "FAILED! => mksysb: Backup has failed. Please fix that issue as soon as you get a chance and try again."
+      success_msg: "PASSED! => mksysb: Backup Completed Successfully, Proceeding with the next task..."
+    final_msg:
+      - "*************************************************************************"
+      - " SUCCESS! The backup of the system image (mksysb) has been completed !!! "
+      - "*************************************************************************"
+  tasks:
+
+    - name: "Print on screen using start_msg var"
+      # Content suggestion provided by Ansible Lightspeed
+      ansible.builtin.debug:
+        msg: "{{ start_msg }}"
+
+    - name: "Mount NFS share using the ibm.power_aix.mount module with the variables node_v, mount_dir_value and mount_over_dir_value"
+      # Content suggestion provided by Ansible Lightspeed
+      ibm.power_aix.mount:
+        state: mount
+        node: "{{ node_v }}"
+        mount_dir: "{{ mount_dir_value }}"
+        mount_over_dir: "{{ mount_over_dir_value }}"
+
+    - name: "Backup the rootvg with ibm.power_aix.backup with action create, type mksysb, location var, exclude_files false and extend_fs"
+      # Content suggestion provided by Ansible Lightspeed
+      ibm.power_aix.backup:
+        action: create
+        type: mksysb
+        location: "{{ location }}"
+        exclude_files: false
+        extend_fs: true
+      register: mksysbackup_status
+
+    - name: "Assert Backup the rootvg with mksysb with custom message dict_assert_backup_msg var"
+      # Content suggestion provided by Ansible Lightspeed
+      ansible.builtin.assert:
+        that:
+          - mksysbackup_status is succeeded
+        fail_msg: "FAILED!  => mksysb: Backup has failed. Please fix that issue as soon as you get a chance and try again."
+        success_msg: "PASSED! => mksysb: Backup Completed Successfully, Proceeding with the next task..."
+
+    - name: "Umount NFS share using the ibm.power_aix.mount module with the variable mount_dir_value and force"
+      # Content suggestion provided by Ansible Lightspeed
+      ibm.power_aix.mount:
+        state: umount
+        node: "{{ node_v }}"
+        mount_dir: "{{ mount_dir_value }}"
+        force: true
+      register: umount_status
+
+    - name: "Notify | Print on screen using final_msg var"
+      # Content suggestion provided by Ansible Lightspeed
+      ansible.builtin.debug:
+        msg: "{{ final_msg }}"
+...

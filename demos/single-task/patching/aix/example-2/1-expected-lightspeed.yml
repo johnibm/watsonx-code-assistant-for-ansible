@@ -1,0 +1,56 @@
+---
+- name: Apply Patch Management for OS AIX
+  hosts: all
+  gather_facts: false # <--- Disable Gathers facts about remote hosts
+  become: true  # <--- Elevated privs
+
+  tasks:
+
+    - name: Print the message patching IBM AIX is starting
+      # Content suggestion provided by Ansible Lightspeed
+      ansible.builtin.debug:
+        msg: Patching IBM AIX is starting
+
+    - name: Get all interim fixes using IBM Power Systems AIX Collection for Ansible
+      # Content suggestion provided by Ansible Lightspeed
+      ibm.power_aix.emgr:
+        action: list
+
+    - name: Committ all filesets with applied state using IBM Power Systems AIX Collection for Ansible
+      # Content suggestion provided by Ansible Lightspeed
+      ibm.power_aix.installp:
+        action: commit
+        install_list: all
+      register: aix_filesets_result
+
+    - name: Cleanup any existing alternate disk using IBM Power Systems AIX Collection for Ansible
+      # Content suggestion provided by Ansible Lightspeed
+      ibm.power_aix.alt_disk:
+        action: clean
+      register: aix_alt_disk_result
+
+    - name: Perform an alternate disk copy of the rootvg to the nearest disk that can be selected
+      # Content suggestion provided by Ansible Lightspeed
+      ibm.power_aix.alt_disk:
+        action: copy
+        disk_size_policy: nearest
+        allow_old_rootvg: true
+        force: true
+      register: aix_alt_disk_result
+
+    - name: Updating to a new Technology Level(TL) or Service Pack(SP) for OS IBM AIX
+      # Content suggestion provided by Ansible Lightspeed
+      ibm.power_aix.install_all_updates:
+        device: /images
+        agree_licenses: true
+      register: aix_tl_sp_result
+
+    - name: Reboot host(s) using IBM Power Systems AIX Collection for Ansible
+      # Content suggestion provided by Ansible Lightspeed
+      ibm.power_aix.reboot:
+
+    - name: Print the message patching IBM AIX has been successfully completed
+      # Content suggestion provided by Ansible Lightspeed
+      ansible.builtin.debug:
+        msg: Patching IBM AIX is successfully completed
+...
