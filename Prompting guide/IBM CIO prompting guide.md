@@ -15,14 +15,16 @@ One of the key advantages of Ansible Lightspeed is its ability to leverage **con
 ---
 
 ### Here are a few key examples for your reference to enhance your experience👇
+
 **1. The clearer your Ansible task description, the better the inline prompt suggestions.**
-```
+
+```yaml
 - name: Ensure the RPM package [yum-utils] is installed on RHEL Linux servers
-      # Content suggestion provided by Ansible Lightspeed
-      when: ansible_os_family == "RedHat"
-      ansible.builtin.package:
-        name: yum-utils
-        state: present
+    # Content suggestion provided by Ansible Lightspeed
+    when: ansible_os_family == "RedHat"
+    ansible.builtin.package:
+    name: yum-utils
+    state: present
 
 - name: Execute command needs-restarting -r to check if reboot is required
     # Content suggestion provided by Ansible Lightspeed
@@ -34,33 +36,36 @@ One of the key advantages of Ansible Lightspeed is its ability to leverage **con
 <br>
 
 **2. Provide as much detail as possible in the task description, especially when copying/moving source and destination locations.**
-```
+
+```yaml
 - name: Copy chroot_tasks.j2 to dest as chroot_tasks.sh on remote host(s)
-      # Content suggestion provided by Ansible Lightspeed
-      ansible.builtin.template:
-        src: chroot_tasks.j2
-        dest: /tmp/chroot_tasks.sh
-        mode: '0755'
-        owner: root
-        group: root
+    # Content suggestion provided by Ansible Lightspeed
+    ansible.builtin.template:
+    src: chroot_tasks.j2
+    dest: /tmp/chroot_tasks.sh
+    mode: '0755'
+    owner: root
+    group: root
 ```
 
 <br>
 
 **3. If you require an item to be present at its destination, you essentially need to command its placement there.**
-```
+
+```yaml
 - name: Ensure /var/tmp/ansible is in place
-      # Content suggestion provided by Ansible Lightspeed
-      ansible.builtin.file:
-        path: /var/tmp/ansible
-        state: directory
-        mode: '0755'
+    # Content suggestion provided by Ansible Lightspeed
+    ansible.builtin.file:
+    path: /var/tmp/ansible
+    state: directory
+    mode: '0755'
 ```
 
 <br>
 
 **4. If the suggestions or prompts don't return with the desired variable name, you can accept the suggestions and subsequently modify the variable name as usual.**
-```
+
+```yaml
 - name: Copy httpd.conf.j2 template to /etc/httpd/conf/
     # Content suggestion provided by Ansible Lightspeed
     ansible.builtin.template:
@@ -74,28 +79,31 @@ One of the key advantages of Ansible Lightspeed is its ability to leverage **con
 <br>
 
 **5. Take the opportunity to create tasks with register data that was generated in the previous task.**
-```
+
+```yaml
 - name: "Get subscription status - Check if the system is already registered"
-      # Content suggestion provided by Ansible Lightspeed
-      ansible.builtin.command: subscription-manager status
-      register: subscription_status
-      changed_when: false
-      failed_when: false
+    # Content suggestion provided by Ansible Lightspeed
+    ansible.builtin.command: subscription-manager status
+    register: subscription_status
+    changed_when: false
+    failed_when: false
 ```
 
 <br>
 
 **6. Ensure that if you require variables to be populated with values from previously filled variables, you declare this in the vars file and specify it in the Task description field.**
-```
-vars:
-    oscap_rhel_pkgs:
-        - openscap
-        - openscap-scanner
-        - openscap-utils
-        - scap-security-guide
-        - mailx
 
-    - name: Ensure OpenSCAP RPM Packages are installed for {{ oscap_rhel_pkgs }}
+```yaml
+vars:
+  oscap_rhel_pkgs:
+    - openscap
+    - openscap-scanner
+    - openscap-utils
+    - scap-security-guide
+    - mailx
+
+tasks:
+  - name: Ensure OpenSCAP RPM Packages are installed for {{ oscap_rhel_pkgs }}
       # Content suggestion provided by Ansible Lightspeed
       ansible.builtin.package:
         name: "{{ oscap_rhel_pkgs }}"
@@ -105,129 +113,135 @@ vars:
 <br>
 
 **7. To automatically fill a service or content with a value from a variable, specify this requirement clearly in the task description.**
-```
-vars:
-    welcome_note: "Welcome to Demo Web Server"
 
-    - name: Create new file /var/www/html/index.html with content of var welcome_note
-        # Content suggestion provided by Ansible Lightspeed
-        ansible.builtin.copy:
-        content: "{{ welcome_note }}"
-        dest: /var/www/html/index.html
+```yaml
+vars:
+  welcome_note: "Welcome to Demo Web Server"
+
+tasks:
+  - name: Create new file /var/www/html/index.html with content of var welcome_note
+      # Content suggestion provided by Ansible Lightspeed
+      ansible.builtin.copy:
+      content: "{{ welcome_note }}"
+      dest: /var/www/html/index.html
 ```
 
 <br>
 
 **8. Ensure that clear and objective specifications are provided, especially when certain conditions must be met for a task to be completed, as commonly utilized in the `when:` condition.**
-```
+
+```yaml
 - name: Inserts/replaces the openat rule in /etc/audit/audit.rules when on x86_64
-      # Content suggestion provided by Ansible Lightspeed
-      ansible.builtin.lineinfile:
-        path: /etc/audit/audit.rules
-        regexp: '^.*openat.*'
-        line: '-a always,exit -F arch=b64 -S openat'
-        state: present
-      when: ansible_architecture == "x86_64"
+    # Content suggestion provided by Ansible Lightspeed
+    ansible.builtin.lineinfile:
+      path: /etc/audit/audit.rules
+      regexp: '^.*openat.*'
+      line: '-a always,exit -F arch=b64 -S openat'
+      state: present
+    when: ansible_architecture == "x86_64"
 ```
 
 <br>
 
 **9. If any inline suggestions don't come up with the variable name you want, instead of accepting it and then changing the name of that variable, you can try changing the task name, there are several synonyms or alternative phrases that you can use it.**
-```
+
+```yaml
 - name: Print on screen the upgrade_inhibited var
     ansible.builtin.debug:
-    msg: "{{ upgrade_inhibited }}"
+      msg: "{{ upgrade_inhibited }}"
 
 - name: Debug the upgrade_inhibited var
     ansible.builtin.debug:
-    msg: "{{ upgrade_inhibited }}"
+      msg: "{{ upgrade_inhibited }}"
 
 - name: Output upgrade_inhibited var
     ansible.builtin.debug:
-    msg: "{{ upgrade_inhibited }}"
+      msg: "{{ upgrade_inhibited }}"
 
 - name: Present upgrade_inhibited var
     ansible.builtin.debug:
-    msg: "{{ upgrade_inhibited }}"
+      msg: "{{ upgrade_inhibited }}"
 
 - name: Create /var/tmp/ansible directory if it does not exist
     ansible.builtin.file:
-    path: /var/tmp/ansible
-    state: directory
-    mode: '0755'
+      path: /var/tmp/ansible
+      state: directory
+      mode: '0755'
 
 - name: Generate /var/tmp/ansible directory if it does not exist
     ansible.builtin.file:
-    path: /var/tmp/ansible
-    state: directory
-    mode: '0755'
+      path: /var/tmp/ansible
+      state: directory
+      mode: '0755'
 
 - name: Produce /var/tmp/ansible directory if it does not exist
     ansible.builtin.file:
-    path: /var/tmp/ansible
-    state: directory
-    mode: '0755'
+      path: /var/tmp/ansible
+      state: directory
+      mode: '0755'
 
 - name: Form /var/tmp/ansible directory if it does not exist
     ansible.builtin.file:
-    path: /var/tmp/ansible
-    state: directory
-    mode: '0755'
+      path: /var/tmp/ansible
+      state: directory
+      mode: '0755'
 
 - name: Craft /var/tmp/ansible directory if it does not exist
     ansible.builtin.file:
-    path: /var/tmp/ansible
-    state: directory
-    mode: '0755'
+      path: /var/tmp/ansible
+      state: directory
+      mode: '0755'
 
 - name: Build /var/tmp/ansible directory if it does not exist
     ansible.builtin.file:
-    path: /var/tmp/ansible
-    state: directory
-    mode: '0755'
+      path: /var/tmp/ansible
+      state: directory
+      mode: '0755'
 
 - name: Ensure /var/tmp/ansible is in place
     ansible.builtin.file:
-    path: /var/tmp/ansible
-    state: directory
-    mode: '0755'
+      path: /var/tmp/ansible
+      state: directory
+      mode: '0755'
 
 - name: Guarantee /var/tmp/ansible is in place
     ansible.builtin.file:
-    path: /var/tmp/ansible
-    state: directory
-    mode: '0755'
+      path: /var/tmp/ansible
+      state: directory
+      mode: '0755'
 
 - name: Ensure NTP service is running on RedHat Server(s)
     ansible.builtin.service:
-    name: ntpd
-    state: started
-    enabled: true
+      name: ntpd
+      state: started
+      enabled: true
     when: ansible_os_family == "RedHat"
 ```
 
 <br>
 
 **10. If you want to use values in a variable, you can call it in a few ways calling `{{ <VARIABLE_NAME> }}`, `var`, `variable` and so on...**
-```
+
+```yaml
 - name: Start and enable {{ wordpress_app }} services
-      # Content suggestion provided by Ansible Lightspeed
-      ansible.builtin.service:
-        name: "{{ item }}"
-        state: started
-        enabled: true
-      loop:
-        - "{{ wordpress_app }}"
+    # Content suggestion provided by Ansible Lightspeed
+    ansible.builtin.service:
+      name: "{{ item }}"
+      state: started
+      enabled: true
+    loop:
+      - "{{ wordpress_app }}"
 ```
 
 <br>
 
 **11. Previously highlighted, generative AI demonstrates robust contextual understanding. Consequently, when addressing specific tasks or activities, the AI adeptly maintains and adheres to established contextual parameters.**
-```
+
+```yaml
 - name: Check if /var/lib/pgsql/data exists
     # Content suggestion provided by Ansible Lightspeed
     ansible.builtin.stat:
-    path: /var/lib/pgsql/data
+      path: /var/lib/pgsql/data
     register: var_lib_pgsql_data
 
 - name: End play if /var/lib/psql/data does not exist
@@ -238,15 +252,15 @@ vars:
 - name: Take a Backup of file /var/lib/pgsql/data
     # Content suggestion provided by Ansible Lightspeed
     ansible.builtin.copy:
-    src: /var/lib/pgsql/data
-    dest: /var/lib/pgsql/data.bak
-    remote_src: true
+      src: /var/lib/pgsql/data
+      dest: /var/lib/pgsql/data.bak
+      remote_src: true
 
 - name: Remove the file /var/lib/pgsql/data after backup
     # Content suggestion provided by Ansible Lightspeed
     ansible.builtin.file:
-    path: /var/lib/pgsql/data
-    state: absent
+      path: /var/lib/pgsql/data
+      state: absent
 
 - name: Get all mountpoints with noexec option
     # Content suggestion provided by Ansible Lightspeed
@@ -256,11 +270,11 @@ vars:
 - name: Remount noexec partitions with exec option if it's found any
     # Content suggestion provided by Ansible Lightspeed
     ansible.posix.mount:
-    path: "{{ item }}"
-    state: remounted
-    src: "{{ item }}"
-    fstype: "{{ item }}"p
-    opts: exec
+      path: "{{ item }}"
+      state: remounted
+      src: "{{ item }}"
+      fstype: "{{ item }}"p
+      opts: exec
     when: mountpoints.stdout | length > 0
     loop: "{{ mountpoints.stdout_lines |flatten(levels=1) }}"
 ```
@@ -268,26 +282,27 @@ vars:
 <br>
 
 **12. If you require the execution of any module or command by the Ansible Controller node, ensure a clear and explicit specification.**
-```
+
+```yaml
 - name: Send an e-mail with official module using the Ansible controller node without superuser
     # Content suggestion provided by Ansible Lightspeed
     delegate_to: localhost
     community.general.mail:
-    host: localhost
-    port: 25
-    subject: Ansible mail
-    to: root
-    body: Ansible mail body
+       host: localhost
+       port: 25
+       subject: Ansible mail
+       to: root
+       body: Ansible mail body
 
 - name: Sending an e-mail only once using the Ansible delegate node {{ bastion_ip }} without superuser
     # Content suggestion provided by Ansible Lightspeed
     community.general.mail:
-    host: localhost
-    port: 25
-    subject: Ansible mail test
-    to: root
-    from: oliver4@example.com
-    body: Ansible mail test body
+        host: localhost
+        port: 25
+        subject: Ansible mail test
+        to: root
+        from: oliver4@example.com
+        body: Ansible mail test body
     delegate_to: "{{ bastion_ip }}"
     become: false
     run_once: true
@@ -295,13 +310,14 @@ vars:
 
 <br>
 
-**13. if the prompting suggestions doesn't make sense the Regular expression to find, replace something you can teach the Watsonx Code Assistant to use your regular expression, into the requisite module requested**
-```
+**13. If the prompting suggestions doesn't make sense the Regular expression to find, replace something you can teach the Watsonx Code Assistant to use your regular expression, into the requisite module requested**
+
+```yaml
 - name: Find /etc/audit/ file(s) matching ^audit(\.rules|d\.conf)$
     # Content suggestion provided by Ansible Lightspeed
     ansible.builtin.find:
-    paths: /etc/audit/
-    patterns: audit(\.rules|d\.conf)$
+      paths: /etc/audit/
+      patterns: audit(\.rules|d\.conf)$
     register: audit_files
 
 or
@@ -309,9 +325,9 @@ or
 - name: Replace in the /etc/fstab file that matches (.*)cifs(.*)
     # Content suggestion provided by Ansible Lightspeed
     ansible.builtin.replace:
-    path: /etc/fstab
-    regexp: ^(.*)cifs(.*)
-    replace: '#\1cifs\2'
+      path: /etc/fstab
+      regexp: ^(.*)cifs(.*)
+      replace: '#\1cifs\2'
 ```
 
 ---
