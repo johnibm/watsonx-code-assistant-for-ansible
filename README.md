@@ -154,11 +154,11 @@ Click on the **'Ansible'** icon on VS Code's Activity Bar -> Under **'Ansible Li
 
 <img src="https://github.com/user-attachments/assets/3c940bed-0ed6-4afe-8380-aec5b2755642" width="75" align="left" alt="model-customization-png">
 
-As a customer grows their Ansible Content library (or when IBM releases and updated base model), It makes sense to re-tune.
+As a customer grows their Ansible Content library (or when IBM releases an updated base model), it makes sense to re-tune the model.
 
 Since every organization is different, **watsonx Code Assistant for Red Hat Ansible Lightspeed** allows users to customize the AI model with their existing Ansible data. This helps provide personalized content recommendations that are more accurate and a better fit for your business.  
 
-Model Customization is done using **Prompt Tuning:** Empowers organizations to tune its domain-specific LLM with their own Ansible data  
+Model Customization is done using **Prompt Tuning:** This empowers organizations to tune its domain-specific LLM with their own Ansible data  
 
 - **Model customization empowers organizations to tune its domain-specific LLM with their own Ansible data**
 - **Customization is beneficial for Ansible because of the many modules that might exist within an Ansible Playbook**
