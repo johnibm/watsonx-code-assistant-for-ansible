@@ -1,0 +1,183 @@
+# Ansible specific files
+*.retry
+*.log
+
+# Temporary files and directories
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+.cache/
+tmp/
+.vagrant/
+
+# Terraform specific files
+*.tfstate
+*.tfstate.*
+*.tfvars
+terraform.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.venv/
+env/
+ENV/
+venv/
+venv.bak/
+*.env
+
+# C
+*.o
+*.a
+*.so
+*.out
+*.obj
+*.exe
+*.dll
+*.pdb
+*.ilk
+*.d
+*.su
+*.idb
+*.mod
+*.cmd
+*.map
+*.dSYM/
+*.dSYM/*
+*.pyc
+*.pyo
+*.pyd
+*.dSYM
+*.dSYM/**
+
+# C++
+*.o
+*.a
+*.so
+*.out
+*.obj
+*.exe
+*.dll
+*.pdb
+*.ilk
+*.d
+*.su
+*.idb
+*.mod
+*.cmd
+*.map
+*.dSYM/
+*.dSYM/*
+*.pyc
+*.pyo
+*.pyd
+*.dSYM
+*.dSYM/**
+
+# Go
+*.exe
+*.test
+*.out
+vendor/
+bin/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+.idea/
+target/
+out/
+
+# JavaScript
+node_modules/
+npm-debug.log
+yarn-error.log
+dist/
+*.log
+
+# TypeScript
+node_modules/
+*.log
+dist/
+out/
+build/
+.tsbuildinfo
+
+# General
+*.log
+*.log.*
+*.bak
+*.swp
+*.swo
+*.tmp
+*.temp
+*~
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon\r
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# Logs
+*.log
+*.log.*
+
+# Backup files
+*.bak
+*.swp
+*.swo
+*.tmp
+*.temp
+
+# IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# JetBrains IDEs
+*.idea/
+*.idea/**/
+*.idea/workspace.xml
+*.idea/libraries
+*.idea/modules.xml
+*.idea/.name
+*.idea/codeStyles
+.idea/**/assets/
+.idea/**/diagrams/
+.idea/**/captures/
+.idea/**/gradle.xml
+.idea/**/watcherTasks.xml
+.idea/**/tasks.xml
+.idea/**/vcs.xml
+
+# JetBrains IDEs directories
+.idea/**
+.idea/**/libraries
+.idea/**/modules.xml
+.idea/**/workspace
