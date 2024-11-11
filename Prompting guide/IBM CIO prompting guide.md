@@ -15,8 +15,10 @@ One of the key advantages of Ansible Lightspeed is its ability to leverage **con
 ---
 
 ### Here are a few key examples for your reference to enhance your experience👇
+
 **1. The clearer your Ansible task description, the better the inline prompt suggestions.**
-```
+
+```yaml
 - name: Ensure the RPM package [yum-utils] is installed on RHEL Linux servers
       # Content suggestion provided by Ansible Lightspeed
       when: ansible_os_family == "RedHat"
@@ -34,7 +36,8 @@ One of the key advantages of Ansible Lightspeed is its ability to leverage **con
 <br>
 
 **2. Provide as much detail as possible in the task description, especially when copying/moving source and destination locations.**
-```
+
+```yaml
 - name: Copy chroot_tasks.j2 to dest as chroot_tasks.sh on remote host(s)
       # Content suggestion provided by Ansible Lightspeed
       ansible.builtin.template:
@@ -48,7 +51,8 @@ One of the key advantages of Ansible Lightspeed is its ability to leverage **con
 <br>
 
 **3. If you require an item to be present at its destination, you essentially need to command its placement there.**
-```
+
+```yaml
 - name: Ensure /var/tmp/ansible is in place
       # Content suggestion provided by Ansible Lightspeed
       ansible.builtin.file:
@@ -60,7 +64,8 @@ One of the key advantages of Ansible Lightspeed is its ability to leverage **con
 <br>
 
 **4. If the suggestions or prompts don't return with the desired variable name, you can accept the suggestions and subsequently modify the variable name as usual.**
-```
+
+```yaml
 - name: Copy httpd.conf.j2 template to /etc/httpd/conf/
     # Content suggestion provided by Ansible Lightspeed
     ansible.builtin.template:
@@ -74,7 +79,8 @@ One of the key advantages of Ansible Lightspeed is its ability to leverage **con
 <br>
 
 **5. Take the opportunity to create tasks with register data that was generated in the previous task.**
-```
+
+```yaml
 - name: "Get subscription status - Check if the system is already registered"
       # Content suggestion provided by Ansible Lightspeed
       ansible.builtin.command: subscription-manager status
@@ -86,7 +92,8 @@ One of the key advantages of Ansible Lightspeed is its ability to leverage **con
 <br>
 
 **6. Ensure that if you require variables to be populated with values from previously filled variables, you declare this in the vars file and specify it in the Task description field.**
-```
+
+```yaml
 vars:
     oscap_rhel_pkgs:
         - openscap
@@ -105,7 +112,8 @@ vars:
 <br>
 
 **7. To automatically fill a service or content with a value from a variable, specify this requirement clearly in the task description.**
-```
+
+```yaml
 vars:
     welcome_note: "Welcome to Demo Web Server"
 
@@ -119,7 +127,8 @@ vars:
 <br>
 
 **8. Ensure that clear and objective specifications are provided, especially when certain conditions must be met for a task to be completed, as commonly utilized in the `when:` condition.**
-```
+
+```yaml
 - name: Inserts/replaces the openat rule in /etc/audit/audit.rules when on x86_64
       # Content suggestion provided by Ansible Lightspeed
       ansible.builtin.lineinfile:
@@ -133,7 +142,8 @@ vars:
 <br>
 
 **9. If any inline suggestions don't come up with the variable name you want, instead of accepting it and then changing the name of that variable, you can try changing the task name, there are several synonyms or alternative phrases that you can use it.**
-```
+
+```yaml
 - name: Print on screen the upgrade_inhibited var
     ansible.builtin.debug:
     msg: "{{ upgrade_inhibited }}"
@@ -209,7 +219,8 @@ vars:
 <br>
 
 **10. If you want to use values in a variable, you can call it in a few ways calling `{{ <VARIABLE_NAME> }}`, `var`, `variable` and so on...**
-```
+
+```yaml
 - name: Start and enable {{ wordpress_app }} services
       # Content suggestion provided by Ansible Lightspeed
       ansible.builtin.service:
@@ -223,7 +234,8 @@ vars:
 <br>
 
 **11. Previously highlighted, generative AI demonstrates robust contextual understanding. Consequently, when addressing specific tasks or activities, the AI adeptly maintains and adheres to established contextual parameters.**
-```
+
+```yaml
 - name: Check if /var/lib/pgsql/data exists
     # Content suggestion provided by Ansible Lightspeed
     ansible.builtin.stat:
@@ -268,7 +280,8 @@ vars:
 <br>
 
 **12. If you require the execution of any module or command by the Ansible Controller node, ensure a clear and explicit specification.**
-```
+
+```yaml
 - name: Send an e-mail with official module using the Ansible controller node without superuser
     # Content suggestion provided by Ansible Lightspeed
     delegate_to: localhost
@@ -295,8 +308,9 @@ vars:
 
 <br>
 
-**13. if the prompting suggestions doesn't make sense the Regular expression to find, replace something you can teach the Watsonx Code Assistant to use your regular expression, into the requisite module requested**
-```
+**13. If the prompting suggestions doesn't make sense the Regular expression to find, replace something you can teach the Watsonx Code Assistant to use your regular expression, into the requisite module requested**
+
+```yaml
 - name: Find /etc/audit/ file(s) matching ^audit(\.rules|d\.conf)$
     # Content suggestion provided by Ansible Lightspeed
     ansible.builtin.find:
