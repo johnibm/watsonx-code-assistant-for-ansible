@@ -20,11 +20,11 @@ One of the key advantages of Ansible Lightspeed is its ability to leverage **con
 
 ```yaml
 - name: Ensure the RPM package [yum-utils] is installed on RHEL Linux servers
-      # Content suggestion provided by Ansible Lightspeed
-      when: ansible_os_family == "RedHat"
-      ansible.builtin.package:
-        name: yum-utils
-        state: present
+    # Content suggestion provided by Ansible Lightspeed
+    when: ansible_os_family == "RedHat"
+    ansible.builtin.package:
+    name: yum-utils
+    state: present
 
 - name: Execute command needs-restarting -r to check if reboot is required
     # Content suggestion provided by Ansible Lightspeed
@@ -39,13 +39,13 @@ One of the key advantages of Ansible Lightspeed is its ability to leverage **con
 
 ```yaml
 - name: Copy chroot_tasks.j2 to dest as chroot_tasks.sh on remote host(s)
-      # Content suggestion provided by Ansible Lightspeed
-      ansible.builtin.template:
-        src: chroot_tasks.j2
-        dest: /tmp/chroot_tasks.sh
-        mode: '0755'
-        owner: root
-        group: root
+    # Content suggestion provided by Ansible Lightspeed
+    ansible.builtin.template:
+    src: chroot_tasks.j2
+    dest: /tmp/chroot_tasks.sh
+    mode: '0755'
+    owner: root
+    group: root
 ```
 
 <br>
@@ -54,11 +54,11 @@ One of the key advantages of Ansible Lightspeed is its ability to leverage **con
 
 ```yaml
 - name: Ensure /var/tmp/ansible is in place
-      # Content suggestion provided by Ansible Lightspeed
-      ansible.builtin.file:
-        path: /var/tmp/ansible
-        state: directory
-        mode: '0755'
+    # Content suggestion provided by Ansible Lightspeed
+    ansible.builtin.file:
+    path: /var/tmp/ansible
+    state: directory
+    mode: '0755'
 ```
 
 <br>
@@ -82,11 +82,11 @@ One of the key advantages of Ansible Lightspeed is its ability to leverage **con
 
 ```yaml
 - name: "Get subscription status - Check if the system is already registered"
-      # Content suggestion provided by Ansible Lightspeed
-      ansible.builtin.command: subscription-manager status
-      register: subscription_status
-      changed_when: false
-      failed_when: false
+    # Content suggestion provided by Ansible Lightspeed
+    ansible.builtin.command: subscription-manager status
+    register: subscription_status
+    changed_when: false
+    failed_when: false
 ```
 
 <br>
@@ -95,14 +95,15 @@ One of the key advantages of Ansible Lightspeed is its ability to leverage **con
 
 ```yaml
 vars:
-    oscap_rhel_pkgs:
-        - openscap
-        - openscap-scanner
-        - openscap-utils
-        - scap-security-guide
-        - mailx
+  oscap_rhel_pkgs:
+    - openscap
+    - openscap-scanner
+    - openscap-utils
+    - scap-security-guide
+    - mailx
 
-    - name: Ensure OpenSCAP RPM Packages are installed for {{ oscap_rhel_pkgs }}
+tasks:
+  - name: Ensure OpenSCAP RPM Packages are installed for {{ oscap_rhel_pkgs }}
       # Content suggestion provided by Ansible Lightspeed
       ansible.builtin.package:
         name: "{{ oscap_rhel_pkgs }}"
@@ -115,13 +116,14 @@ vars:
 
 ```yaml
 vars:
-    welcome_note: "Welcome to Demo Web Server"
+  welcome_note: "Welcome to Demo Web Server"
 
-    - name: Create new file /var/www/html/index.html with content of var welcome_note
-        # Content suggestion provided by Ansible Lightspeed
-        ansible.builtin.copy:
-        content: "{{ welcome_note }}"
-        dest: /var/www/html/index.html
+tasks:
+  - name: Create new file /var/www/html/index.html with content of var welcome_note
+      # Content suggestion provided by Ansible Lightspeed
+      ansible.builtin.copy:
+      content: "{{ welcome_note }}"
+      dest: /var/www/html/index.html
 ```
 
 <br>
@@ -130,13 +132,13 @@ vars:
 
 ```yaml
 - name: Inserts/replaces the openat rule in /etc/audit/audit.rules when on x86_64
-      # Content suggestion provided by Ansible Lightspeed
-      ansible.builtin.lineinfile:
-        path: /etc/audit/audit.rules
-        regexp: '^.*openat.*'
-        line: '-a always,exit -F arch=b64 -S openat'
-        state: present
-      when: ansible_architecture == "x86_64"
+    # Content suggestion provided by Ansible Lightspeed
+    ansible.builtin.lineinfile:
+      path: /etc/audit/audit.rules
+      regexp: '^.*openat.*'
+      line: '-a always,exit -F arch=b64 -S openat'
+      state: present
+    when: ansible_architecture == "x86_64"
 ```
 
 <br>
@@ -222,13 +224,13 @@ vars:
 
 ```yaml
 - name: Start and enable {{ wordpress_app }} services
-      # Content suggestion provided by Ansible Lightspeed
-      ansible.builtin.service:
-        name: "{{ item }}"
-        state: started
-        enabled: true
-      loop:
-        - "{{ wordpress_app }}"
+    # Content suggestion provided by Ansible Lightspeed
+    ansible.builtin.service:
+      name: "{{ item }}"
+      state: started
+      enabled: true
+    loop:
+      - "{{ wordpress_app }}"
 ```
 
 <br>
@@ -286,21 +288,21 @@ vars:
     # Content suggestion provided by Ansible Lightspeed
     delegate_to: localhost
     community.general.mail:
-    host: localhost
-    port: 25
-    subject: Ansible mail
-    to: root
-    body: Ansible mail body
+       host: localhost
+       port: 25
+       subject: Ansible mail
+       to: root
+       body: Ansible mail body
 
 - name: Sending an e-mail only once using the Ansible delegate node {{ bastion_ip }} without superuser
     # Content suggestion provided by Ansible Lightspeed
     community.general.mail:
-    host: localhost
-    port: 25
-    subject: Ansible mail test
-    to: root
-    from: oliver4@example.com
-    body: Ansible mail test body
+        host: localhost
+        port: 25
+        subject: Ansible mail test
+        to: root
+        from: oliver4@example.com
+        body: Ansible mail test body
     delegate_to: "{{ bastion_ip }}"
     become: false
     run_once: true
@@ -314,8 +316,8 @@ vars:
 - name: Find /etc/audit/ file(s) matching ^audit(\.rules|d\.conf)$
     # Content suggestion provided by Ansible Lightspeed
     ansible.builtin.find:
-    paths: /etc/audit/
-    patterns: audit(\.rules|d\.conf)$
+      paths: /etc/audit/
+      patterns: audit(\.rules|d\.conf)$
     register: audit_files
 
 or
@@ -323,9 +325,9 @@ or
 - name: Replace in the /etc/fstab file that matches (.*)cifs(.*)
     # Content suggestion provided by Ansible Lightspeed
     ansible.builtin.replace:
-    path: /etc/fstab
-    regexp: ^(.*)cifs(.*)
-    replace: '#\1cifs\2'
+      path: /etc/fstab
+      regexp: ^(.*)cifs(.*)
+      replace: '#\1cifs\2'
 ```
 
 ---
