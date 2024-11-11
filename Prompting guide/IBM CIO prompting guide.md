@@ -148,73 +148,73 @@ tasks:
 ```yaml
 - name: Print on screen the upgrade_inhibited var
     ansible.builtin.debug:
-    msg: "{{ upgrade_inhibited }}"
+      msg: "{{ upgrade_inhibited }}"
 
 - name: Debug the upgrade_inhibited var
     ansible.builtin.debug:
-    msg: "{{ upgrade_inhibited }}"
+      msg: "{{ upgrade_inhibited }}"
 
 - name: Output upgrade_inhibited var
     ansible.builtin.debug:
-    msg: "{{ upgrade_inhibited }}"
+      msg: "{{ upgrade_inhibited }}"
 
 - name: Present upgrade_inhibited var
     ansible.builtin.debug:
-    msg: "{{ upgrade_inhibited }}"
+      msg: "{{ upgrade_inhibited }}"
 
 - name: Create /var/tmp/ansible directory if it does not exist
     ansible.builtin.file:
-    path: /var/tmp/ansible
-    state: directory
-    mode: '0755'
+      path: /var/tmp/ansible
+      state: directory
+      mode: '0755'
 
 - name: Generate /var/tmp/ansible directory if it does not exist
     ansible.builtin.file:
-    path: /var/tmp/ansible
-    state: directory
-    mode: '0755'
+      path: /var/tmp/ansible
+      state: directory
+      mode: '0755'
 
 - name: Produce /var/tmp/ansible directory if it does not exist
     ansible.builtin.file:
-    path: /var/tmp/ansible
-    state: directory
-    mode: '0755'
+      path: /var/tmp/ansible
+      state: directory
+      mode: '0755'
 
 - name: Form /var/tmp/ansible directory if it does not exist
     ansible.builtin.file:
-    path: /var/tmp/ansible
-    state: directory
-    mode: '0755'
+      path: /var/tmp/ansible
+      state: directory
+      mode: '0755'
 
 - name: Craft /var/tmp/ansible directory if it does not exist
     ansible.builtin.file:
-    path: /var/tmp/ansible
-    state: directory
-    mode: '0755'
+      path: /var/tmp/ansible
+      state: directory
+      mode: '0755'
 
 - name: Build /var/tmp/ansible directory if it does not exist
     ansible.builtin.file:
-    path: /var/tmp/ansible
-    state: directory
-    mode: '0755'
+      path: /var/tmp/ansible
+      state: directory
+      mode: '0755'
 
 - name: Ensure /var/tmp/ansible is in place
     ansible.builtin.file:
-    path: /var/tmp/ansible
-    state: directory
-    mode: '0755'
+      path: /var/tmp/ansible
+      state: directory
+      mode: '0755'
 
 - name: Guarantee /var/tmp/ansible is in place
     ansible.builtin.file:
-    path: /var/tmp/ansible
-    state: directory
-    mode: '0755'
+      path: /var/tmp/ansible
+      state: directory
+      mode: '0755'
 
 - name: Ensure NTP service is running on RedHat Server(s)
     ansible.builtin.service:
-    name: ntpd
-    state: started
-    enabled: true
+      name: ntpd
+      state: started
+      enabled: true
     when: ansible_os_family == "RedHat"
 ```
 
@@ -241,7 +241,7 @@ tasks:
 - name: Check if /var/lib/pgsql/data exists
     # Content suggestion provided by Ansible Lightspeed
     ansible.builtin.stat:
-    path: /var/lib/pgsql/data
+      path: /var/lib/pgsql/data
     register: var_lib_pgsql_data
 
 - name: End play if /var/lib/psql/data does not exist
@@ -252,15 +252,15 @@ tasks:
 - name: Take a Backup of file /var/lib/pgsql/data
     # Content suggestion provided by Ansible Lightspeed
     ansible.builtin.copy:
-    src: /var/lib/pgsql/data
-    dest: /var/lib/pgsql/data.bak
-    remote_src: true
+      src: /var/lib/pgsql/data
+      dest: /var/lib/pgsql/data.bak
+      remote_src: true
 
 - name: Remove the file /var/lib/pgsql/data after backup
     # Content suggestion provided by Ansible Lightspeed
     ansible.builtin.file:
-    path: /var/lib/pgsql/data
-    state: absent
+      path: /var/lib/pgsql/data
+      state: absent
 
 - name: Get all mountpoints with noexec option
     # Content suggestion provided by Ansible Lightspeed
@@ -270,11 +270,11 @@ tasks:
 - name: Remount noexec partitions with exec option if it's found any
     # Content suggestion provided by Ansible Lightspeed
     ansible.posix.mount:
-    path: "{{ item }}"
-    state: remounted
-    src: "{{ item }}"
-    fstype: "{{ item }}"p
-    opts: exec
+      path: "{{ item }}"
+      state: remounted
+      src: "{{ item }}"
+      fstype: "{{ item }}"p
+      opts: exec
     when: mountpoints.stdout | length > 0
     loop: "{{ mountpoints.stdout_lines |flatten(levels=1) }}"
 ```
