@@ -1,0 +1,65 @@
+---
+- name: Perform backup ( Alternate Disk ) for AIX systems
+  hosts: all
+  gather_facts: true # <--- Enabled Gathers facts about remote hosts
+  become: true  # <--- Elevated privs
+  vars:
+    start_msg:
+      - "*******************************************************************"
+      - " Starting Make Backup (Cloning a rootvg using alternate disk copy) "
+      - "*******************************************************************"
+    targets: "{{ var_hdisk | default('hdisk1') }}"
+    dict_assert_hdisk_msg:
+      fail_msg: "FAILED! => Unable to find the hard disk device selected: [ {{ targets }} ]. Fix that issue as soon as you get a chance and try again."
+      success_msg: "PASSED! => The hard disk device selected: [ {{ targets }} ] has been found. proceeding to the next task..."
+    disclaimer_msg:
+      - "************************************************************************************"
+      - " >>>>>>>> ATTENTION!!!! ALL DATA ON THE SELECTED DEVICE WILL BE DESTROYED <<<<<<<<< "
+      - " ENSURE THAT THE DISK IS NOT PART OF AN LVM VOLUME GROUP AND THAT IT IS NOT IN USE. "
+      - "************************************************************************************"
+    dict_assert_length_msg:
+      fail_msg: "FAILED! Some LVs have long names (above 12 characters) that cause problems during the alternate rootvg creation. Fix that issue and try again."
+      success_msg: "PASSED! => LVs Long names (more than 12 characters) check passed. Proceeding with the next tasks..."
+    dict_assert_multibos_msg:
+      fail_msg: "FAILED! => The Multibos(bos_hd5) LV where there is a clone of the rootvg on the same disk, Fix that issue and try again."
+      success_msg: "PASSED! => The Multibos(bos_hd5) image in rootvg has not been used by the system. Proceeding with the next tasks..."
+    dict_assert_tcb_msg:
+      fail_msg: "FAILED! => TCB is not supported on recent versions of AIX. Fix that issue as soon as you get a chance and try again."
+      success_msg: "PASSED! => The system has not used TCB (Trusted Computing Base). Proceeding with the next tasks..."
+    dict_assert_mirror_msg:
+      fail_msg: "FAILED! => Your Root Disk(rootvg) is mirrored(hd5), Please detach the mirror as soon as you get a chance and try again."
+      success_msg: "PASSED! => You do not have a mirrored disk, so we're good to go. Proceeding with the next tasks..."
+    dict_assert_alternate_msg:
+      fail_msg: "FAILED! => No evidence found in logs that Alternate Disk finished successfully. Fix that issue as soon as you get a chance and try again."
+      success_msg: "PASSED! => Cloning a rootvg using an (Alternate Disk) copy was successful. Proceeding to the next task..."
+    final_msg:
+      - "*****************************************************************************"
+      - " SUCCESS! => Cloning a rootvg using an (Alternate Disk) has been completed ! "
+      - "*****************************************************************************"
+  tasks:
+
+    # - name: "Assert | Print on screen using start_msg var"
+
+    # - name: "Assert | Print on screen using disclaimer_msg var"
+
+    # - name: Assert | length of LV names in rootvg with custom message dict_assert_length_msg var
+
+    # - name: Assert | ansible_facts.devices search for 'bos_hd5' with a custom message dict_assert_multibos_msg var
+
+    # - name: Assert | Using shell check if TCB (Trusted Computing Base) is enabled
+
+    # - name: "Assert | string 'tcb_disabled' in stdout output at previous task with a custom message dict_assert_tcb_msg var"
+
+    # - name: Assert | Run the command 'lppchk -vm3' to check if system has missing or broken filesets
+
+    # - name: "Assert | The length of the stdout output in the previous task is equal to zero with a custom message dict_assert_tcb_msg var"
+
+    # - name: Assert | ansible_facts.vgs.rootvg search for attribute 'pv_name' is equal to 1 with a custom message dict_assert_mirror_msg var
+
+    # - name: "Backup | Run a cleanup of any existing alternate disk copies using alt_disk with the clean action"
+
+    # - name: "Backup | Run alternate disk copy with alt_disk module using targets var (It takes a while) - (DO NOT CANCEL IT)"
+
+    # - name: "Backup | Assert 'Fixing file system superblocks...' in stdout output at previous task with a custom message dict_assert_alternate_msg var"
+
+    # - name: "Notify | Print on screen using final_msg var"

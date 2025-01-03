@@ -1,0 +1,22 @@
+---
+- name: Apply Patch Management for OS AIX
+  hosts: all
+  gather_facts: false # <--- Disable Gathers facts about remote hosts
+  become: true  # <--- Elevated privs
+
+  tasks:
+    # - name: Print the message patching IBM AIX is starting
+
+    # - name: Get all interim fixes using IBM Power Systems AIX Collection for Ansible
+
+    # - name: Committ all filesets with applied state using IBM Power Systems AIX Collection for Ansible
+
+    # - name: Cleanup any existing alternate disk using IBM Power Systems AIX Collection for Ansible
+
+    # - name: Perform an alternate disk copy of the rootvg to the nearest disk that can be selected
+
+    # - name: Updating to a new Technology Level(TL) or Service Pack(SP) for OS IBM AIX
+
+    # - name: Reboot host(s) using IBM Power Systems AIX Collection for Ansible
+
+    # - name: Print the message patching IBM AIX has been successfully completed

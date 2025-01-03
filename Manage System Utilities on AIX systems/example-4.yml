@@ -1,0 +1,12 @@
+---
+- name: Perform backup ( Alternate Disk ) for AIX systems
+  hosts: all
+  gather_facts: false # <--- Disable Gathers facts about remote hosts
+  become: true  # <--- Elevated privs
+  tasks:
+
+    # - name: "Perform a cleanup of any existing alternate disk copy using ibm.power_aix.alt_disk with action clean"
+  
+    # - name: "Run alternate disk copy with alt_disk module with the copy action, disk_size_policy nearest and force and register the output"
+
+    # - name: "Assert string 'Fixing file system superblocks...' in stdout output at previous task"

@@ -1,0 +1,19 @@
+---
+- name: Perform backup ( Alternate Disk ) for AIX systems
+  hosts: all
+  gather_facts: false # <--- Disable Gathers facts about remote hosts
+  become: true  # <--- Elevated privs
+  vars:
+    dict_disk_config_create:
+      action: copy
+      targets: "{{ var_hdisk | default('hdisk1') }}"
+    dict_assert_msg:
+      fail_msg: "FAILED! => No evidence found in logs that Alternate Disk finished successfully. Fix that issue as soon as you get a chance and try again."
+      success_msg: "PASSED! => Cloning a rootvg using an (Alternate Disk) copy was successful. Proceeding to the next task..."
+  tasks:
+
+    # - name: "Run a cleanup of all existing alternate disk copies using alt_disk module with the clean action with force and register the output"
+    
+    # - name: Run alternate disk copy with alt_disk module using dict {{ dict_disk_config_create }}
+    
+    # - name: "Assert 'Fixing file system superblocks...' in stdout output at previous task and using {{ dict_disk_assert }}"
