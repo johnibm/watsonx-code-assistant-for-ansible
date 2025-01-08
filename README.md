@@ -93,7 +93,7 @@ _The new feature Playbook generation eases that burden by leveraging a chat-styl
 
 **How to access Playbook Generation?**  
 Click on the **'Ansible'** icon on VS Code's Activity Bar  
-Under **'Ansible Content Creator'** -> **'Get Started'**  
+Under **'Ansible Development Tools'** -> **'Playbook'** under **ADD**  
 Under **'Create'** -> **'Playbook with Ansible Lightspeed'**
 
 **🎯 Copy the content below and paste into the textarea.**
