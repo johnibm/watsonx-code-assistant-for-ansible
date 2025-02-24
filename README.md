@@ -51,7 +51,7 @@ _IBM® watsonx™ Code Assistant for Ansible Lightspeed offers a chat-style expe
 <br>
 
 **Check out sample playbooks to see Single-Task Generation in action**
-👉 Click [**here**](./demos/single-task/) to explore the demonstrations and get hands-on experience in real-world scenarios.
+👉 Click [**here**](https://github.com/IBM/watsonx-code-assistant-for-ansible) to explore the demonstrations and get hands-on experience in real-world scenarios.
 
 <br>
 
@@ -77,7 +77,7 @@ Move your cursor to the end of the line
 **Note:** _Generating contextually aware, accurate Ansible content suggestions saves you time and helps you create efficiently. One of Red Hat Ansible Lightspeed’s superpowers is **context.** The last task just asks to **"Allow the traffic"**, which might seem counterintuitive as an AI **"ask"**, but the Red Hat Ansible Lightspeed service is aware of the Ansible Playbook it's working in and suggests a port suggestion to open which corresponds to the default port for **PostgreSQL(5432).**_
 
 **Check out sample playbooks to see Multi-Task Generation in action**
-👉 Click [**here**](./demos/multi-task/) to explore the demonstrations and get hands-on experience in real-world scenarios.
+👉 Click [**here**](https://github.com/IBM/watsonx-code-assistant-for-ansible) to explore the demonstrations and get hands-on experience in real-world scenarios.
 
 <br>
 
@@ -111,7 +111,7 @@ Install and enable PostgreSQL
 **Note:** _The feature exclusively creates **self-contained** Full Playbooks — it does not generate Ansible roles._
 
 **Check out sample playbooks to see Full Playbook Generation in action**
-👉 Click [**here**](./demos/playbook-generation/) to explore the demonstrations and get hands-on experience in real-world scenarios.
+👉 Click [**here**](https://github.com/IBM/watsonx-code-assistant-for-ansible) to explore the demonstrations and get hands-on experience in real-world scenarios.
 
 <br>
 
