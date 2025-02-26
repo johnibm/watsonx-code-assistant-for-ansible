@@ -46,7 +46,7 @@ _IBM® watsonx™ Code Assistant for Ansible Lightspeed offers a chat-style expe
 - Press **"ENTER"** to generate a suggestion.
 - Press **"TAB"** to accept 👍 the suggestion.
 
-<img src="https://github.com/user-attachments/assets/f03de63b-5f23-418d-babf-2c3d93a439d4" alt="single-task-gif">
+<img src="./Media/WCA Ansible Single Task.gif" alt="single-task-gif">
 
 <br>
 
@@ -72,7 +72,7 @@ Move your cursor to the end of the line
 - Press **"ENTER"** to generate a suggestion with multiple.
 - Press **"TAB"** to accept 👍 the suggestion.
 
-<img src="https://github.com/user-attachments/assets/35a1e224-58fd-4fcd-a5e2-1fa51fdaed85" alt="multi-task-gif">
+<img src="./Media/WCA Ansible Multi Task.gif" alt="multi-task-gif">
 
 **Note:** _Generating contextually aware, accurate Ansible content suggestions saves you time and helps you create efficiently. One of Red Hat Ansible Lightspeed’s superpowers is **context.** The last task just asks to **"Allow the traffic"**, which might seem counterintuitive as an AI **"ask"**, but the Red Hat Ansible Lightspeed service is aware of the Ansible Playbook it's working in and suggests a port suggestion to open which corresponds to the default port for **PostgreSQL(5432).**_
 
@@ -106,7 +106,7 @@ Install and enable PostgreSQL
 - **Review the suggested steps for your playbook and modify as needed.** _(Prompt refinement)_
 - Press **"Generate playbook"** to open a new tab file with the full playbook.
 
-<img src="./Media/playbook-generation.gif">
+<img src="./Media/WCA Ansible Playbook Generation.gif">
 
 **Note:** _The feature exclusively creates **self-contained** Full Playbooks — it does not generate Ansible roles._
 
@@ -138,7 +138,7 @@ There are 2 ways you can initiate Playbook explanation:
 Right click on the **Playbook** -> **'Explain the playbook with Ansible Lightspeed'**  
 Click on the **'Ansible'** icon on VS Code's Activity Bar -> Under **'Ansible Lightspeed'** -> **'Explain the current playbook'**  
 
-<img src="./Media/playbook-explanation.gif">  
+<img src="./Media/WCA Ansible Playbook Explanation.gif">
 
 ❗ **Note:** ❗
 - _You can run playbook explanation on any existing Ansible playbooks._ 
