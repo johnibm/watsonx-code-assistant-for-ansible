@@ -10,12 +10,11 @@
 
 - [Introduction](#table-of-contents)
 - [Single-Task Generation](#single-task-generation)
-  <!-- - [DEMO: Single-Task Generation](#demo---single-task-generation) -->
 - [Multi-Task Generation](#multi-task-generation)
-  <!-- - [DEMO: Multi-Task Generation](#demo---multi-task-generation) -->
 - [Playbook Generation](#playbook-generation)
-  <!-- - [DEMO: Playbook Generation](#demo---full-playbook-generation) -->
 - [Playbook Explanation](#playbook-explanation)
+- [Role Generation](#role-generation)
+- [Role Explanation](#role-explanation)
 - [Model Customization](#model-customization)
 - [Ansible Lightspeed Prompting Guide - Practical hands-on](./Prompting%20guide/IBM%20CIO%20prompting%20guide.md)
 - [Questions, Bug(Issue) or New Features(Contribute)](#question-bugissue--or-new-featurescontribute-️)
@@ -151,6 +150,27 @@ Click on the **'Ansible'** icon on VS Code's Activity Bar -> Under **'Ansible Li
 🎥 [Ansible Playbook Creation with IBM watsonx Code Assistant](https://youtu.be/vG54TKeEwP4)
 
 <br>
+
+## **Role Generation**
+You can create roles within Ansible collections using the Ansible VS Code extension. To create roles, use the Ansible VS Code extension, select the Role Generation option, and then enter the natural language prompts in English language. Red Hat Ansible Lightspeed reads the natural language prompts and creates a role recommendation based on your intent.
+
+**How to access Role Generation?**
+Click on the **'Ansible'** icon on VS Code's Activity Bar -> Under **'Ansible Lightspeed'** -> **'Generate a role'**
+
+<img src="./Media/WCA Ansible Role Generation.gif">
+
+<br>
+
+## **Role Explanation**
+You can also view the explanations for new or existing roles. The role explanations describe what the role does and contextualize its impact.
+
+**How to access Role Generation?**
+Click on the **'Ansible'** icon on VS Code's Activity Bar -> Under **'Ansible Lightspeed'** -> **'Explain the current role'**
+
+<img src="./Media/WCA Ansible Role Explanation.gif">
+
+<br>
+
 
 ## **Model Customization** 
 

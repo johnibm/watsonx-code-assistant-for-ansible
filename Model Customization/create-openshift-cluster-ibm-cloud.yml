@@ -3,4 +3,17 @@
   hosts: all
 
   tasks:
+    # Before tuning output
     - name: Create an OpenShift cluster
+      vars:
+          - cluster_state: present
+        ansible.builtin.include_role:
+          name: deploy_cluster
+
+    # After tuning output
+    - name: Create an OpenShift cluster
+      kubernetes.core.k8s:
+        definition:
+          kind: Cluster
+        name: "{{ _name_ }}"
+      register: cluster_output
